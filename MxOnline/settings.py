@@ -99,7 +99,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mxonline',
         'USER':'root',
-        'PASSWORD':"",
+        'PASSWORD':"wenyuan123",
         "HOST":'127.0.0.1'
 
     }
@@ -143,21 +143,21 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
-]
+#STATICFILES_DIRS = [
+#    os.path.join(BASE_DIR, "static")
+#]
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # 发送邮件
 EMAIL_HOST = "smtp.sina.com"
-EMAIL_PORT = 25
+EMAIL_PORT = 587
 EMAIL_HOST_USER = "miaowenyuan2017@sina.com"
-#EMAIL_HOST_PASSWORD ="mmgcuanvdjfpcbbd"
+EMAIL_HOST_PASSWORD ="wenyuan123"
 #iceahchdqlqccbci
-EMAIL_HOST_PASSWORD = "wenyuan123"
+#EMAIL_HOST_PASSWORD = "wenyuan123"
 EMAIL_USE_TLS = False
 EMAIL_FROM ="miaowenyuan2017@sina.com"
 
@@ -168,3 +168,14 @@ PAGINATION_SETTINGS = {
 
     'SHOW_FIRST_PAGE_WHEN_INVALID': True,
 }
+
+
+
+#CELERY_STUFF
+BROKER_URL='redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+
+

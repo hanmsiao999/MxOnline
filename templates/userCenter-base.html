@@ -34,7 +34,7 @@
                         <div class="personal">
                             <dl class="user fr">
                                 <dd>{{ request.user.username }}<img class="down fr" src="{% static 'images/top_down.png' %}"/></dd>
-                                <dt><img width="20" height="20" src="{% static '{{ MEDIA_URL }}{{ request.user.image }}' %}"/></dt>
+                                <dt><img width="20" height="20" src="{{ MEDIA_URL }}{{ request.user.image }}"/></dt>
                             </dl>
                             <div class="userdetail">
                             	<dl>

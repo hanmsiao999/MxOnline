@@ -40,7 +40,7 @@ urlpatterns = [
     url(r'^Modifypassword/$', RestPasswordView.as_view(), name='Modifypassword'),
     url(r'^forget/$', ForgetPwdView.as_view(), name='forget_pwd'),
     # 配置上传文件的访问处理
-    url(r'^media/(?P<path>.*)', serve, {"document_root":MEDIA_ROOT}),
+    #url(r'^media/(?P<path>.*)', serve, {"document_root":MEDIA_ROOT}),
     #url(r'^static/(?P<path>.*)', serve, {"document_root":STATIC_ROOT}),
     # 课程机构ur配置
     url(r'^org/', include('orgnization.urls',namespace="org")),

@@ -18,7 +18,8 @@ from operation.models import UserFavourate, UserMessage
 from orgnization.models import Teacher, CourseOrg
 from courses.models import Course
 from .forms import loginForm, RegisterForm, ForgetForm, ModifyPwdForm, ImageUpLoadForm, UserInfoForm
-from utils.email_send import send_register_email
+#from utils.email_send import send_register_email
+from utils.celery_email_send import send_feedback_email_task
 from utils.mixin_utils import LoginRequiredMixin
 
 class CustomBackend(ModelBackend):
@@ -152,7 +153,8 @@ class ActiveUserView(View):
                 validate_email(email)
             except ValidationError as ex:
                 return render(request, "check_email.html",{'user': user,'msg':"邮箱格式错误",'email':email})
-            send_register_email(email, "register")
+            #send_register_email(email, "register")
+            send_feedback_email_task.delay(email, "register")
             return render(request, "check_email.html", {'user': user, 'msg': "邮件已发送注意查收",'email':email})
         else:
             all_record = EmailVerifyRecord.objects.filter(code=active_code,email=email)

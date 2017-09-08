@@ -32,9 +32,11 @@ def send_register_email(email, send_type='register'):
     email_body = ""
 
     if send_type == 'register':
-        email_title = '慕学在线——注册激活连接'
-        email_body = '请点击下方链接注册帐号:http://127.0.0.1:8000/active/{0}'.format(email_record.code)
+        email_title = '慕学在线——注册验证码'
+        email_body = '慕学在线——注册验证码:{0}'.format(email_record.code)
+        print ("before sending email")
         send_status = send_mail(email_title, email_body, EMAIL_FROM,[email_record.email])
+        print ("done sending email")
         if send_status:
             pass
     elif send_type == 'forget':

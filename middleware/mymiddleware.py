@@ -14,6 +14,7 @@ class IPrecord(object):
 
     def process_exception(self, request, exception):
         print ("process wrong")
+        print (exception)
         return HttpResponseRedirect(reverse("serverError"))
 
     def process_response(self, request, response):
